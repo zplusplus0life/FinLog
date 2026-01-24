@@ -1,0 +1,20 @@
+import ConfirmedPasswordStatusController from './ConfirmedPasswordStatusController'
+import ConfirmablePasswordController from './ConfirmablePasswordController'
+import TwoFactorAuthenticatedSessionController from './TwoFactorAuthenticatedSessionController'
+import TwoFactorAuthenticationController from './TwoFactorAuthenticationController'
+import ConfirmedTwoFactorAuthenticationController from './ConfirmedTwoFactorAuthenticationController'
+import TwoFactorQrCodeController from './TwoFactorQrCodeController'
+import TwoFactorSecretKeyController from './TwoFactorSecretKeyController'
+import RecoveryCodeController from './RecoveryCodeController'
+const Controllers = {
+    ConfirmedPasswordStatusController: Object.assign(ConfirmedPasswordStatusController, ConfirmedPasswordStatusController),
+ConfirmablePasswordController: Object.assign(ConfirmablePasswordController, ConfirmablePasswordController),
+TwoFactorAuthenticatedSessionController: Object.assign(TwoFactorAuthenticatedSessionController, TwoFactorAuthenticatedSessionController),
+TwoFactorAuthenticationController: Object.assign(TwoFactorAuthenticationController, TwoFactorAuthenticationController),
+ConfirmedTwoFactorAuthenticationController: Object.assign(ConfirmedTwoFactorAuthenticationController, ConfirmedTwoFactorAuthenticationController),
+TwoFactorQrCodeController: Object.assign(TwoFactorQrCodeController, TwoFactorQrCodeController),
+TwoFactorSecretKeyController: Object.assign(TwoFactorSecretKeyController, TwoFactorSecretKeyController),
+RecoveryCodeController: Object.assign(RecoveryCodeController, RecoveryCodeController),
+}
+
+export default Controllers

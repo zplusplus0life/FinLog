@@ -1,0 +1,53 @@
+# Dependencies
+/node_modules
+/vendor
+
+# Build assets
+/public/build
+/public/hot
+
+
+
+# Environment files
+.env
+.env.backup
+.env.production
+
+# IDE and editor directories
+/.idea
+/.vscode
+/.fleet
+/.nova
+/.zed
+.phpactor.json
+
+# Testing
+/.phpunit.cache
+.phpunit.result.cache
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log
+yarn-error.log
+error_log
+
+# Homestead
+Homestead.json
+Homestead.yaml
+
+# User-specific files
+/auth.json
+
+# Additional common exclusions
+/bootstrap/cache/*.php
+*.log
+*.sql
+*.bak
+*.swp
+*~
+composer.phar
+pnpm-lock.yaml
+yarn.lock
