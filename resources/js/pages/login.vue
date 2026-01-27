@@ -36,7 +36,7 @@ const tombolKirim = () => {
 
 
 <label class="block text-gray-700 mb-1">Password:</label>
-<input type="password" v-model="form.password" required class="w-full border border-gray-300 rounded-md p-2 text-gray-800 bg-white focus:ring-2 focues:ring-blue-500"/>
+<input type="password" v-model="form.password" required class="w-full border border-gray-300 rounded-md p-2 text-gray-800 bg-white focus:ring-2 focus:ring-blue-500"/>
 
 
 <div class="flex items-center">
