@@ -98,6 +98,60 @@ class CategoryModelTest extends TestCase
     {
         $fillable = ['name', 'type', 'is_active'];
 
-        $categoryFillable =
+        $categoryFillable =(new Category())->getFillable();
+
+        foreach($fillable as $attribute){
+            $this->assertContains($attribute, $categoryFillable);
+        }
+    }
+
+    /** @test */
+    public function category_timestamp_are_auto_managed()
+    {
+        $category = Category::factory()->create();
+
+        $this->assertNotNull($category->created_at);
+        $this->assertNotNull($category->updated_at);
+    }
+
+    /** @test */
+    public function multiple_categories_can_have_transactions()
+    {
+        $cat1 = Category::factory()->create();
+        $cat2 = Category::factory()->create();
+        $user = User::factory()->create(['role' => 'staff']);
+
+        FinancialTransaction::factory()
+        ->count(2)
+        ->for($user)
+        ->for($cat1)
+        ->create();
+
+        FinancialTransaction::factory()
+        ->count(3)
+        ->for($user)
+        ->for($cat2)
+        ->create();
+
+        $this->assertCount(2, $cat1->transactions);
+        $this->assertCount(3, $cat2->transactions);
+    }
+
+    /** @test */
+    public function deleting_category_cascades_to_transactions()
+    {
+        $category = Category::factory()->create();
+        $user = User::factory()->create(['role' =>'staff']);
+
+        FinancialTransaction::factory()
+        ->count(2)
+        ->for($user)
+        ->for($category)
+        ->create();
+
+        $category->delete();
+
+        $this->assertDatabaseMissing('categories', ['id' => $category->id]);
+        $this->assertDatabaseMissing('financial_transactions', ['category_id' => $category->id]);
     }
 }
