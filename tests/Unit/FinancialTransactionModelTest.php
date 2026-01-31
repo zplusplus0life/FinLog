@@ -53,4 +53,72 @@ class FinancialTransactionModelTest extends TestCase
         $this->assertInstanceOf(User::class, $transaction->user);
         $this->assertEquals($this->user->id, $transaction->user->id);
     }
+
+
+    /** @test */
+    public function transaction_has_belongs_to_category_relationship()
+    {
+        $transaction = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create();
+
+        $this->assertInstanceOf(Category::class, $this->category);
+        $this->assertEquals($this->category->id, $transaction->category->id);
+    }
+
+    /** @test */
+    public function transaction_can_store_income_and_expense_types()
+    {
+        $income = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create(['type' => 'income']);
+
+        $expense = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create(['type' => 'expense']);
+
+        $this->assertEquals('income', $income->type);
+        $this->assertEquals('expense', $expense->type);
+    }
+
+    /** @test */
+    public function transaction_can_store_all_status_values()
+    {
+        $status = ['pending', 'approved', 'rejected'];
+
+        foreach($status as $data){
+            $transaction = FinancialTransaction::factory()
+            ->for($this->user)
+            ->for($this->category)
+            ->create(['status' => $data]);
+
+            $this->assertEquals($data, $transaction->status);
+        }
+    }
+
+    /** @test */
+    public function transaction_can_store_large_amounts()
+    {
+        $transaction = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create(['amount' => 9999999999999.99]);
+
+        $this->assertEquals(9999999999999.99, $transaction->amount);
+    }
+
+
+    /** @test */
+    public function transaction_can_store_rejection_reason()
+    {
+        $transaction = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create(['rejection_reason' => 'Amount exceeds limit']);
+
+        $this->assertEquals('Amount exceeds limit', $transaction->rejection_reason);
+    }
 }
