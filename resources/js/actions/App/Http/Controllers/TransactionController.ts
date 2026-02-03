@@ -299,7 +299,7 @@ pending.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
  * @see app/Http/Controllers/TransactionController.php:150
  * @route '/api/transactions/{transaction}/approve'
  */
-export const approve = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const approve = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: approve.url(args, options),
     method: 'post',
 })
@@ -314,7 +314,7 @@ approve.definition = {
  * @see app/Http/Controllers/TransactionController.php:150
  * @route '/api/transactions/{transaction}/approve'
  */
-approve.url = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+approve.url = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { transaction: args }
     }
@@ -347,7 +347,7 @@ approve.url = (args: { transaction: string | number | { id: string | number } } 
  * @see app/Http/Controllers/TransactionController.php:150
  * @route '/api/transactions/{transaction}/approve'
  */
-approve.post = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+approve.post = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: approve.url(args, options),
     method: 'post',
 })
@@ -357,7 +357,7 @@ approve.post = (args: { transaction: string | number | { id: string | number } }
  * @see app/Http/Controllers/TransactionController.php:150
  * @route '/api/transactions/{transaction}/approve'
  */
-    const approveForm = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const approveForm = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: approve.url(args, options),
         method: 'post',
     })
@@ -367,7 +367,7 @@ approve.post = (args: { transaction: string | number | { id: string | number } }
  * @see app/Http/Controllers/TransactionController.php:150
  * @route '/api/transactions/{transaction}/approve'
  */
-        approveForm.post = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        approveForm.post = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: approve.url(args, options),
             method: 'post',
         })
@@ -378,7 +378,7 @@ approve.post = (args: { transaction: string | number | { id: string | number } }
  * @see app/Http/Controllers/TransactionController.php:169
  * @route '/api/transactions/{transaction}/reject'
  */
-export const reject = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+export const reject = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reject.url(args, options),
     method: 'post',
 })
@@ -393,7 +393,7 @@ reject.definition = {
  * @see app/Http/Controllers/TransactionController.php:169
  * @route '/api/transactions/{transaction}/reject'
  */
-reject.url = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+reject.url = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { transaction: args }
     }
@@ -426,7 +426,7 @@ reject.url = (args: { transaction: string | number | { id: string | number } } |
  * @see app/Http/Controllers/TransactionController.php:169
  * @route '/api/transactions/{transaction}/reject'
  */
-reject.post = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
+reject.post = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'post'> => ({
     url: reject.url(args, options),
     method: 'post',
 })
@@ -436,7 +436,7 @@ reject.post = (args: { transaction: string | number | { id: string | number } } 
  * @see app/Http/Controllers/TransactionController.php:169
  * @route '/api/transactions/{transaction}/reject'
  */
-    const rejectForm = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const rejectForm = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: reject.url(args, options),
         method: 'post',
     })
@@ -446,7 +446,7 @@ reject.post = (args: { transaction: string | number | { id: string | number } } 
  * @see app/Http/Controllers/TransactionController.php:169
  * @route '/api/transactions/{transaction}/reject'
  */
-        rejectForm.post = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        rejectForm.post = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: reject.url(args, options),
             method: 'post',
         })
@@ -457,7 +457,7 @@ reject.post = (args: { transaction: string | number | { id: string | number } } 
  * @see app/Http/Controllers/TransactionController.php:96
  * @route '/api/transactions/{transaction}'
  */
-export const update = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+export const update = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -472,7 +472,7 @@ update.definition = {
  * @see app/Http/Controllers/TransactionController.php:96
  * @route '/api/transactions/{transaction}'
  */
-update.url = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+update.url = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { transaction: args }
     }
@@ -505,7 +505,7 @@ update.url = (args: { transaction: string | number | { id: string | number } } |
  * @see app/Http/Controllers/TransactionController.php:96
  * @route '/api/transactions/{transaction}'
  */
-update.put = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
+update.put = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'put'> => ({
     url: update.url(args, options),
     method: 'put',
 })
@@ -515,7 +515,7 @@ update.put = (args: { transaction: string | number | { id: string | number } } |
  * @see app/Http/Controllers/TransactionController.php:96
  * @route '/api/transactions/{transaction}'
  */
-    const updateForm = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const updateForm = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: update.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'PUT',
@@ -530,7 +530,7 @@ update.put = (args: { transaction: string | number | { id: string | number } } |
  * @see app/Http/Controllers/TransactionController.php:96
  * @route '/api/transactions/{transaction}'
  */
-        updateForm.put = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        updateForm.put = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: update.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'PUT',
@@ -546,7 +546,7 @@ update.put = (args: { transaction: string | number | { id: string | number } } |
  * @see app/Http/Controllers/TransactionController.php:122
  * @route '/api/transactions/{transaction}'
  */
-export const destroy = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+export const destroy = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -561,7 +561,7 @@ destroy.definition = {
  * @see app/Http/Controllers/TransactionController.php:122
  * @route '/api/transactions/{transaction}'
  */
-destroy.url = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions) => {
+destroy.url = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions) => {
     if (typeof args === 'string' || typeof args === 'number') {
         args = { transaction: args }
     }
@@ -594,7 +594,7 @@ destroy.url = (args: { transaction: string | number | { id: string | number } } 
  * @see app/Http/Controllers/TransactionController.php:122
  * @route '/api/transactions/{transaction}'
  */
-destroy.delete = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
+destroy.delete = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteDefinition<'delete'> => ({
     url: destroy.url(args, options),
     method: 'delete',
 })
@@ -604,7 +604,7 @@ destroy.delete = (args: { transaction: string | number | { id: string | number }
  * @see app/Http/Controllers/TransactionController.php:122
  * @route '/api/transactions/{transaction}'
  */
-    const destroyForm = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+    const destroyForm = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
         action: destroy.url(args, {
                     [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                         _method: 'DELETE',
@@ -619,7 +619,7 @@ destroy.delete = (args: { transaction: string | number | { id: string | number }
  * @see app/Http/Controllers/TransactionController.php:122
  * @route '/api/transactions/{transaction}'
  */
-        destroyForm.delete = (args: { transaction: string | number | { id: string | number } } | [transaction: string | number | { id: string | number } ] | string | number | { id: string | number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
+        destroyForm.delete = (args: { transaction: number | { id: number } } | [transaction: number | { id: number } ] | number | { id: number }, options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
             action: destroy.url(args, {
                         [options?.mergeQuery ? 'mergeQuery' : 'query']: {
                             _method: 'DELETE',

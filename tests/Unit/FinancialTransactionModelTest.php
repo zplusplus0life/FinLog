@@ -121,4 +121,28 @@ class FinancialTransactionModelTest extends TestCase
 
         $this->assertEquals('Amount exceeds limit', $transaction->rejection_reason);
     }
+
+    /** @test */
+    public function transaction_can_store_approved_by_id()
+    {
+        $manajer = User::factory()->create(['role' => 'manajer']);
+        $transaction = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create(['approved_by' => $manajer->id]);
+
+        $this->assertEquals($manajer->id, $transaction->approved_by);
+    }
+
+    /** @test */
+    public function transaction_can_store_approved_at_timestamp()
+    {
+        $now = now();
+        $transaction = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create(['approved_at' => $now]);
+
+        $this->assertEquals($now, $transaction->approved_at);
+    }
 }
