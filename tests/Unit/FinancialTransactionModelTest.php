@@ -145,4 +145,34 @@ class FinancialTransactionModelTest extends TestCase
 
         $this->assertEquals($now, $transaction->approved_at);
     }
+    /** @test */
+    public function transaction_has_all_fillable_attributes()
+    {
+        $fillable = [
+            'user_id',
+            'category_id',
+            'transaction_date',
+            'amount',
+            'description',
+            'type',
+            'status',
+        ];
+
+        $transactionFillable = (new FinancialTransaction())->getFillable();
+        foreach($fillable as $attribute){
+            $this->assertContains($attribute, $transactionFillable);
+        }
+    }
+
+    /** @test */
+    public function transaction_timestamps_are_auto_managed()
+    {
+        $transaction = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create();
+
+        $this->assertNotNull($transaction->created_at);
+        $this->assertNotNull($transaction->updated_at);
+    }
 }
