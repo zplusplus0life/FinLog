@@ -175,4 +175,40 @@ class FinancialTransactionModelTest extends TestCase
         $this->assertNotNull($transaction->created_at);
         $this->assertNotNull($transaction->updated_at);
     }
+
+    /** @test */
+    public function multiple_transaction_can_belong_to_same_user()
+    {
+        $trans1= FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create();
+
+        $trans2= FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create();
+
+            $this->assertEquals($this->user->id, $trans1->user_id);
+    $this->assertEquals($this->user->id, $trans2->user_id);
+    }
+
+
+    /** @test */
+    public function multiple_transaction_can_belong_to_same_category()
+    {
+        $trans1 = FinancialTransaction::factory()
+        ->for($this->user)
+        ->for($this->category)
+        ->create();
+
+        $trans2 = FinancialTransaction::factory()
+        ->for(User::factory()->create(['role' => 'staff']))
+        ->for($this->category)
+        ->create();
+
+        $this->assertEquals($this->category->id, $trans1->category_id);
+        $this->assertEquals($this->category->id, $trans2->category_id);
+    }
+
 }
