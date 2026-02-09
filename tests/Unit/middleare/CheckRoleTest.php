@@ -26,8 +26,17 @@ class CheckRoleTest extends TestCase
     }
 
     /** @test */
-    public function guest_is_redirected_to_login(): void
+    public function guest_is_redirected_to_login()
     {
-        $this->assertTrue(true);
+        $middleware = new Checkrole();
+
+        $req = Request::create('/admin/dashboard', 'GET');
+
+        $res = $middleware->handle($req, function(){
+            return new Response('OK');
+        }, 'admin');
+
+        $this->assertEquals('302', $res->getStatusCode());
+        $this->assertStringContainsString('login', $res->headers->get('Location'));
     }
 }
