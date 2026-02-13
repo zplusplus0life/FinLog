@@ -39,4 +39,23 @@ class CheckRoleTest extends TestCase
         $this->assertEquals('302', $res->getStatusCode());
         $this->assertStringContainsString('login', $res->headers->get('Location'));
     }
+
+    /** @test */
+    public function user_with_allowed_role_can_pass()
+    {
+        $middleware = new Checkrole();
+
+        $user = User::factory()->create(['role' => 'admin']);
+
+        $this->actingAs($user);
+
+        $req = Request::create('/admin/dashboard', 'GET');
+
+        $res = $middleware->handle($req, function(){
+            return new Response('OK');
+        }, 'admin', 'staff');
+
+        $this->assertEquals(200, $res->getStatusCode());
+    }
+    
 }
