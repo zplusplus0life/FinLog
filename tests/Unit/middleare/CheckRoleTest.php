@@ -58,4 +58,24 @@ class CheckRoleTest extends TestCase
         $this->assertEquals(200, $res->getStatusCode());
     }
     
+    /** @test */
+    public function user_with_disallowed_role_gets_403()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->expectException(\Symfony\Component\HttpKernel\Exception\HttpException::class);
+
+        $middleware = new Checkrole();
+
+        $user = User::factory()->create(['role' => 'staff']);
+
+        $this->ActingAs($user);
+
+        $req = Request::create('/admin/dashboard', 'GET');
+
+        $middleware->handle($req, function() {
+return new Response('OK');
+        }, 'admin');
+
+    }
 }
