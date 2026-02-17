@@ -1,0 +1,32 @@
+<?php
+
+namespace Tests\Unit;
+
+use Tests\TestCase;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
+
+
+class UserModelTest extends TestCase
+{
+    
+    use RefreshDatabase;
+
+    /** @test */
+    public function user_can_be_created_with_valid_data()
+    {
+       $user = User::create([
+        'nama_lengkap' => 'john cena',
+        'email' => 'cena@example.com',
+        'password' => Hash::make('pasword123'),
+        'role' => 'staff',
+        'status' => true,
+       ]);
+
+       $this->assertNotNull($user->id);
+       $this->assertEquals('john cena', $user->nama_lengkap);
+       $this->assertEquals('staff', $user->role);
+       $this->assertEquals(true, $user->status);
+    }
+}
