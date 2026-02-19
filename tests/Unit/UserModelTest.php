@@ -29,4 +29,32 @@ class UserModelTest extends TestCase
        $this->assertEquals('staff', $user->role);
        $this->assertEquals(true, $user->status);
     }
+
+    /** @test */
+    public function user_password_is_hashed()
+    {
+        $plainPassword = 'passwordAman123';
+
+        $user = User::create([
+            'nama_lengkap' => 'john cena',
+            'email' => 'john@cena.com',
+            'password' => Hash::make($plainPassword),
+            'role' => 'staff',
+        ]);
+
+        $this->assertNotEquals($plainPassword, $user->password);
+        $this->assertTrue(Hash::check($plainPassword, $user->password));
+    }
+
+
+    /** @test */
+    public function user_can_store_all_valid_roles()
+    {
+        $role = ['admin', 'staff', 'manajer'];
+
+        foreach($role as $roles){
+            $user = User::factory()->create(['role' => $roles]);
+            $this->assertEquals($roles, $user->role);
+        }
+    }
 }
