@@ -57,4 +57,44 @@ class UserModelTest extends TestCase
             $this->assertEquals($roles, $user->role);
         }
     }
+
+
+    /** @test */
+    public function user_can_be_activated()
+    {
+        $user = User::factory()->create(['status' => false]);
+
+        $user->update(['status' => true]);
+
+        $this->assertTrue($user->status);
+    }
+
+    /** @test */
+    public function user_can_be_deactivated()
+    {
+        $user = User::factory()->create(['status' => true]);
+
+        $user->update(['status' => false]);
+
+        $this->assertFalse($user->status);
+    }
+
+
+    /** @test */
+    public function user_has_all_fillable_attributes()
+    {
+        $fillable = [
+            'nama_lengkap',
+            'email',
+            'password',
+            'role',
+            'status',
+        ];
+
+        $dataUser = (new User())->getFillable();
+
+        forEach($fillable as $attributes){
+            $this->assertContains($attributes, $dataUser);
+        }
+    }
 }
