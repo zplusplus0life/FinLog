@@ -13,7 +13,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('dataUser', function (Blueprint $table) {
-            // Change the 'role' column to a string, then add a check constraint.
             $table->string('role', 255)->default('staff')->change();
         });
     

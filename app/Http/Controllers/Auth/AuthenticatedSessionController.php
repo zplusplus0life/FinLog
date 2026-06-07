@@ -27,8 +27,6 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        // Biarkan ValidationException bubble untuk Inertia (422),
-        // sehingga useForm.onError terpanggil dan menampilkan toast "Data tidak valid".
         $request->authenticate();
         $request->session()->regenerate();
 
@@ -53,7 +51,6 @@ class AuthenticatedSessionController extends Controller
             return redirect('/staff/overview');
         }
 
-        // Fallback: ke halaman home jika role tidak dikenali
         return redirect(RouteServiceProvider::HOME);
     }
 
@@ -68,7 +65,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        // Force a fresh page load instead of Inertia redirect
         return redirect('/')->withHeaders(['X-Inertia-Location' => url('url'),]);
     }
 }

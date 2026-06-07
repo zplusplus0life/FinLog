@@ -39,8 +39,6 @@ class EnforceRolePrefix
         if ($first && array_key_exists($first, $prefixRoleMap)) {
             $requiredRole = $prefixRoleMap[$first];
             if ($userRole !== $requiredRole) {
-                // Return 404 to avoid disclosing the existence of other role areas
-                // Log attempted access for security monitoring
                 \Log::warning('Attempted unauthorized access', [
                     'user_id' => $user->id,
                     'user_role' => $userRole,
@@ -52,17 +50,6 @@ class EnforceRolePrefix
                 abort(403, 'Akses tidak di izinkan');
             }
         }
-
-        // Additional check: Prevent access to any role-specific resource files
-        // if ($request->is('files/*')) {
-        //     $pathParts = explode('/', $path);
-        //     if (count($pathParts) >= 2 && $pathParts[0] === 'files') {
-        //         $fileRole = strtolower($pathParts[1] ?? '');
-        //         if ($fileRole && $fileRole !== $userRole) {
-        //             abort(404, 'File tidak ditemukan');
-        //         }
-        //     }
-        // }
 
         return $next($request);
     }

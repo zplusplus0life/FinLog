@@ -74,8 +74,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        // Note: The database migration sets onDelete('cascade'). 
-        // Deleting a category will also delete all transactions associated with it.
         $category->delete();
 
         return response()->json(null, 204);

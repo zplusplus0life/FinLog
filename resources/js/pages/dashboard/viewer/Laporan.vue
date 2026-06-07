@@ -2,7 +2,7 @@
 import { ref, watch, onMounted } from 'vue';
 
 // --- Reactive State ---
-const activeItem = ref(1); // Laporan is index 1
+const activeItem = ref(1);
 const menuItems = ref([
     { name: 'Dashboard', icon: '📊' },
     { name: 'Laporan', icon: '📈' }
@@ -217,6 +217,7 @@ function exportExcel() {
                         <div class="filter-group">
                             <label class="filter-label">Tahun</label>
                             <select v-model="selectedYear" class="filter-select">
+                                <option value="2026">2026</option>
                                 <option value="2025">2025</option>
                                 <option value="2024">2024</option>
                                 <option value="2023">2023</option>
@@ -278,7 +279,6 @@ function exportExcel() {
                 <div class="tabs">
                     <button 
                         v-for="tab in tabs" 
-                        :key="tab.value"
                         @click="activeTab = tab.value"
                         :class="['tab', activeTab === tab.value ? 'active' : '']">
                         {{ tab.label }}

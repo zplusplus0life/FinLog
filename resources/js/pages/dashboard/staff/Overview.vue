@@ -88,7 +88,7 @@ const getPeriodDateRange = (period: string) => {
 
     switch (period) {
         case 'Year-to-date':
-            startDate = new Date(2025, 0, 1, 0, 0, 0, 0); // Force 2025 since our data is in 2025
+            startDate = new Date(2025, 0, 1, 0, 0, 0, 0); 
             break;
         case 'Month-to-month':
             startDate = new Date(2025, now.getMonth(), 1, 0, 0, 0, 0);
@@ -114,12 +114,12 @@ const getPeriodDateRange = (period: string) => {
 const filteredTransactionsByPeriod = computed(() => {
     const { startDate, endDate } = getPeriodDateRange(selectedPeriod.value);
 
-    // Filter only approved transactions for overview display
+   
     return props.transactions
         .filter((t: any) => t.status === 'approved')
         .filter((t: any) => {
             const transactionDate = new Date(t.transaction_date);
-            transactionDate.setHours(0, 0, 0, 0); // Normalize transactionDate to beginning of day for comparison
+            transactionDate.setHours(0, 0, 0, 0); 
 
             return transactionDate >= startDate && transactionDate <= endDate;
         });
@@ -131,7 +131,7 @@ const periodDataPoints = computed(() => {
     const { startDate, endDate } = getPeriodDateRange(selectedPeriod.value);
     const points = [];
 
-    if (selectedPeriod.value.includes('day')) { // Last 7 days, Last 30 days
+    if (selectedPeriod.value.includes('day')) { 
         let current = new Date(startDate);
         while (current <= endDate) {
             points.push({
@@ -142,7 +142,7 @@ const periodDataPoints = computed(() => {
             });
             current.setDate(current.getDate() + 1);
         }
-    } else { // Month-based periods
+    } else { 
         let current = new Date(startDate.getFullYear(), startDate.getMonth(), 1);
         while (current <= endDate) {
             points.push({
@@ -237,7 +237,7 @@ const growthData = computed(() => {
 });
 
 const netProfitCard = computed(() => {
-    const vat = totals.value.totalRevenue * 0.11; // 11% VAT
+    const vat = totals.value.totalRevenue * 0.11; 
     return {
         netProfit: totals.value.netProfit,
         operatingCosts: totals.value.totalExpenses,
@@ -321,7 +321,7 @@ const profitMarginTable = computed(() => {
     return calculatedPeriodData.value.map(m => ({
         month: m.label,
         margin: m.profitMargin,
-        target: 25, // Hardcoded target
+        target: 25, 
         variance: m.profitMargin - 25,
     }));
 });

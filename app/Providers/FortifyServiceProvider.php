@@ -12,7 +12,7 @@ class FortifyServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        // Ignore Fortify default routes to prevent conflicts with our custom auth routes
+       
         \Laravel\Fortify\Fortify::ignoreRoutes();
 
         Fortify::loginView(fn () => inertia('login'));

@@ -54,7 +54,7 @@ class CategoryModelTest extends TestCase
     }
 
     /** @test */
-    public function category_has_many_transactions_relationshiip()
+    public function category_has_many_transactions_relationship()
     {
         $category = Category::factory()->create();
         $user = User::factory()->create(['role' => 'staff']);

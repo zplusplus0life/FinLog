@@ -19,7 +19,6 @@ class ExportController extends Controller
         return $pdf->download('laporan_keuangan_' . time() . '.pdf');
     }
 
-    // This is the same logic from TransactionController, refactored here.
     private function getReportData(Request $request)
     {
         $validated = $request->validate([

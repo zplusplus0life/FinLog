@@ -61,7 +61,6 @@ Route::middleware(['auth', 'role:admin', EnforceRolePrefix::class])->prefix('adm
         return Inertia::render('dashboard/admin/Laporan');
     })->name('laporan');
 
-    // Catch-all: allow admin to access any page inside resources/js/pages/dashboard/admin/*
     Route::get('/{page?}', function ($page = 'Overview') {
         $component = collect(explode('/', trim($page, '/')))
             ->filter()
@@ -92,7 +91,7 @@ Route::middleware(['auth', 'role:manajer', EnforceRolePrefix::class])->prefix('m
         return Inertia::render('dashboard/manajer/Laporan');
     })->name('laporan');
 
-    // Catch-all: allow manajer to access any page inside resources/js/pages/dashboard/manajer/*
+   
     Route::get('/{page?}', function ($page = 'Overview') {
         $component = collect(explode('/', trim($page, '/')))
             ->filter()
@@ -123,7 +122,6 @@ Route::middleware(['auth', 'role:staff', EnforceRolePrefix::class])->prefix('sta
         return Inertia::render('dashboard/staff/Laporan');
     })->name('laporan');
 
-    // Catch-all: allow staff to access any page inside resources/js/pages/dashboard/staff/*
     Route::get('/{page?}', function ($page = 'Overview') {
         $component = collect(explode('/', trim($page, '/')))
             ->filter()
@@ -131,8 +129,7 @@ Route::middleware(['auth', 'role:staff', EnforceRolePrefix::class])->prefix('sta
             ->implode('/');
 
         $candidate = 'dashboard/staff/' . ($component === '' ? 'Overview' : $component);
-        $path = base_path('resources/js/pages/' . $candidate . '.vue'); // Corrected placement
-
+        $path = base_path('resources/js/pages/' . $candidate . '.vue'); 
         if (! file_exists($path)) {
             abort(404);
         }
@@ -186,19 +183,3 @@ Route::prefix('viewer')->middleware('guest')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// ==================================================
-// ROLE-BASED FILE ACCESS ROUTES
-// ==================================================
-
-// Secure file access routes with role-based restrictions
-Route::middleware(['auth', 'secure.file'])->group(function () {
-    // File serving route - users can only access files in their role directory
-    Route::get('/files/{role}/{filename}', [\App\Http\Controllers\FileAccessController::class, 'serveFile'])
-        ->name('files.serve')
-        ->where('role', 'admin|manajer|staff')
-        ->where('filename', '[^/]+');
-});
-
-// Diagnostic/test route - restrict to admin only
-Route::get('/test-hash', [\App\Http\Controllers\UserController::class, 'testHash'])->middleware(['auth', 'role:admin']);

@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('dataUser', function (Blueprint $table) {
-            // Change the password column to have a length of 255 characters
             $table->string('password', 255)->change();
         });
     }
@@ -23,8 +22,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('dataUser', function (Blueprint $table) {
-            // Revert the change. Note: This might fail if the original length was different
-            // and there are now long strings in the column.
             $table->string('password')->change();
         });
     }
