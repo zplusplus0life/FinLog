@@ -16,7 +16,7 @@ Aplikasi ini mendukung pencatatan transaksi, pengelompokan kategori, serta alur 
 
 FinLog dirancang menyerupai Single-Page Application (SPA) menggunakan Inertia.js, sehingga frontend Vue.js dan backend Laravel terintegrasi tanpa API REST terpisah.
 
-[![Video demo FinLog](docs/Thumbnail-YT/thumbnail.jpeg)](https://www.youtube.com/watch?v=f-kvJPb8gmU)
+[![Video demo FinLog](docs/Thumbnail-YT/thumbnail.jpeg)](https://youtu.be/I6FtWXhEcPM?si=1LsBiyFA53nCTIZR)
 
 
 ## Live Demo (Deployment)
