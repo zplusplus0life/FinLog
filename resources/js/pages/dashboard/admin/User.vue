@@ -382,6 +382,5 @@ function showNotification(message: string, type: 'success' | 'error') {
 .avatar { width: 36px; height: 36px; border-radius: 50%; background-color: #3b82f6; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; }
 .notification { position: fixed; top: 20px; right: 20px; padding: 16px; border-radius: 8px; color: white; z-index: 1001; transform: translateX(120%); transition: transform 0.3s ease; }
 .notification.show { transform: translateX(0); }
-.notification.success { background-color: #16a34a; }
 .notification.error { background-color: #dc2626; }
 </style>

@@ -246,6 +246,5 @@ function showNotification(message: string, type: 'success' | 'error' | 'warning'
 .required { color: #dc2626; }
 .notification { position: fixed; top: 20px; right: 20px; padding: 16px; border-radius: 8px; color: white; z-index: 1001; transform: translateX(120%); transition: transform 0.3s ease; }
 .notification.show { transform: translateX(0); }
-.notification.success { background-color: #16a34a; }
 .notification.error { background-color: #dc2626; }
 </style>

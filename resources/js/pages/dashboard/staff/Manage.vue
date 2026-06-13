@@ -362,10 +362,6 @@ function canDelete(t: any){return t.status === 'pending'}
 .required { color: #dc2626; }
 .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; }
 .modal-content { background-color: white; border-radius: 12px; max-width: 600px; width: 90%; }
-.notification { position: fixed; top: 20px; right: 20px; padding: 16px; border-radius: 8px; color: white; z-index: 1001; transform: translateX(120%); transition: transform 0.3s ease; }
-.notification.show { transform: translateX(0); }
-.notification.success { background-color: #16a34a; }
-.notification.error { background-color: #dc2626; }
 .status-badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; }
 .status-badge.pending { background-color: #fef3c7; color: #d97706; }
 .status-badge.approved { background-color: #dcfce7; color: #16a34a; }
