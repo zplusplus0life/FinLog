@@ -216,106 +216,10 @@ deleteMethod.delete = (args: { filename: string | number } | [filename: string |
         })
     
     deleteMethod.form = deleteMethodForm
-/**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-export const serve = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: serve.url(args, options),
-    method: 'get',
-})
-
-serve.definition = {
-    methods: ["get","head"],
-    url: '/files/{role}/{filename}',
-} satisfies RouteDefinition<["get","head"]>
-
-/**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-serve.url = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions) => {
-    if (Array.isArray(args)) {
-        args = {
-                    role: args[0],
-                    filename: args[1],
-                }
-    }
-
-    args = applyUrlDefaults(args)
-
-    const parsedArgs = {
-                        role: args.role,
-                                filename: args.filename,
-                }
-
-    return serve.definition.url
-            .replace('{role}', parsedArgs.role.toString())
-            .replace('{filename}', parsedArgs.filename.toString())
-            .replace(/\/+$/, '') + queryParams(options)
-}
-
-/**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-serve.get = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions): RouteDefinition<'get'> => ({
-    url: serve.url(args, options),
-    method: 'get',
-})
-/**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-serve.head = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions): RouteDefinition<'head'> => ({
-    url: serve.url(args, options),
-    method: 'head',
-})
-
-    /**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-    const serveForm = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-        action: serve.url(args, options),
-        method: 'get',
-    })
-
-            /**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-        serveForm.get = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: serve.url(args, options),
-            method: 'get',
-        })
-            /**
-* @see \App\Http\Controllers\FileAccessController::serve
- * @see app/Http/Controllers/FileAccessController.php:16
- * @route '/files/{role}/{filename}'
- */
-        serveForm.head = (args: { role: string | number, filename: string | number } | [role: string | number, filename: string | number ], options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
-            action: serve.url(args, {
-                        [options?.mergeQuery ? 'mergeQuery' : 'query']: {
-                            _method: 'HEAD',
-                            ...(options?.query ?? options?.mergeQuery ?? {}),
-                        }
-                    }),
-            method: 'get',
-        })
-    
-    serve.form = serveForm
 const files = {
     list: Object.assign(list, list),
 upload: Object.assign(upload, upload),
 delete: Object.assign(deleteMethod, deleteMethod),
-serve: Object.assign(serve, serve),
 }
 
 export default files

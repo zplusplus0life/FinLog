@@ -71,7 +71,7 @@ home.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     
     home.form = homeForm
 /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
 export const laporan = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -85,7 +85,7 @@ laporan.definition = {
 } satisfies RouteDefinition<["get","head"]>
 
 /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
 laporan.url = (options?: RouteQueryOptions) => {
@@ -93,7 +93,7 @@ laporan.url = (options?: RouteQueryOptions) => {
 }
 
 /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
 laporan.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -101,7 +101,7 @@ laporan.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
     method: 'get',
 })
 /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
 laporan.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -110,7 +110,7 @@ laporan.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 })
 
     /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
     const laporanForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -119,7 +119,7 @@ laporan.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
     })
 
             /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
         laporanForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -127,7 +127,7 @@ laporan.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
             method: 'get',
         })
             /**
- * @see routes/web.php:159
+ * @see routes/web.php:156
  * @route '/viewer/laporan'
  */
         laporanForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({

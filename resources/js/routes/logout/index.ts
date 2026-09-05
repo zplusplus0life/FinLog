@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../wayfinder'
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::standalone
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:63
+ * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:60
  * @route '/logout'
  */
 export const standalone = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -16,7 +16,7 @@ standalone.definition = {
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::standalone
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:63
+ * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:60
  * @route '/logout'
  */
 standalone.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ standalone.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::standalone
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:63
+ * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:60
  * @route '/logout'
  */
 standalone.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
@@ -35,7 +35,7 @@ standalone.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
     /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::standalone
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:63
+ * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:60
  * @route '/logout'
  */
     const standaloneForm = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
@@ -45,7 +45,7 @@ standalone.post = (options?: RouteQueryOptions): RouteDefinition<'post'> => ({
 
             /**
 * @see \App\Http\Controllers\Auth\AuthenticatedSessionController::standalone
- * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:63
+ * @see app/Http/Controllers/Auth/AuthenticatedSessionController.php:60
  * @route '/logout'
  */
         standaloneForm.post = (options?: RouteQueryOptions): RouteFormDefinition<'post'> => ({
